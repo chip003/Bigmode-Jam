@@ -1,10 +1,16 @@
-[gd_scene load_steps=2 format=3 uid="uid://bymtbfhrhpmut"]
+[gd_scene load_steps=3 format=3 uid="uid://bymtbfhrhpmut"]
 
 [ext_resource type="Texture2D" uid="uid://cxfl43d47l6qf" path="res://icon.svg" id="1_rm055"]
+[ext_resource type="Script" path="res://Sprite2D.gd" id="1_wolbl"]
 
 [node name="Node2D" type="Node2D"]
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="CharacterBody2D" parent="."]
 position = Vector2(574.5, 324)
-scale = Vector2(8.94531, 5.01563)
+motion_mode = 1
+script = ExtResource("1_wolbl")
+
+[node name="Sprite2D" type="Sprite2D" parent="Sprite2D"]
 texture = ExtResource("1_rm055")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D"]
