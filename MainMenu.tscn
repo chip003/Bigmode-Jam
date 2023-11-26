@@ -5,5 +5,10 @@
 [node name="Node2D" type="Node2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+<<<<<<< Updated upstream
 position = Vector2(564, 304)
+=======
+position = Vector2(576, 324)
+scale = Vector2(9, 5.0625)
+>>>>>>> Stashed changes
 texture = ExtResource("1_rm055")
