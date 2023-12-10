@@ -4,11 +4,26 @@ var moatRadius = Vector2(16,12)
 var gold = 100
 var day = 1
 
+var maxHP = 100
+var maxRep = 100
+
+var hp = maxHP
+var rep = maxRep
+
 func _process(delta):
+	$Canvas/UI/RightVBox/CastleHealth/MarginContainer/Label.text = str(hp) + "/" + str(maxHP) + " "
+	$Canvas/UI/RightVBox/Reputation/MarginContainer/Label.text = "" + str(rep) + "/" + str(maxRep)
+	
+	$Canvas/UI/RightVBox/CastleHealth.max_value = maxHP
+	$Canvas/UI/RightVBox/CastleHealth.value = hp
+	$Canvas/UI/RightVBox/Reputation.max_value = maxRep
+	$Canvas/UI/RightVBox/Reputation.value = rep
+	
 	$Canvas/UI/LeftVBox/MarginContainer/MarginContainer/VBoxContainer/Gold/Label.text = str(gold)
 	$Canvas/UI/LeftVBox/Days/MarginContainer/Label.text = "DAY " + str(day)
 
 func expand_moat():
+
 	var width = moatRadius.x*2
 	var height = moatRadius.y*2
 	
@@ -33,5 +48,5 @@ func expand_moat():
 	moatRadius.x += 1
 	moatRadius.y += 1
 
-func _on_button_pressed():
+func _on_moat_button_pressed():
 	expand_moat()
