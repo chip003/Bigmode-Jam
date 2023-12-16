@@ -1,0 +1,1 @@
+class_name Buildable extends StaticBody2D

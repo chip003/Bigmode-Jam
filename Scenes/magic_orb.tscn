@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://cxutpgliawq0h"]
+
+[ext_resource type="Script" path="res://Scenes/magic_orb.gd" id="1_2b2li"]
+[ext_resource type="Texture2D" uid="uid://b2yse8j88jclv" path="res://Sprites/magic_orb.png" id="2_qgloj"]
+[ext_resource type="Texture2D" uid="uid://chx061sni1cqu" path="res://Sprites/weapon_platform.png" id="3_ssicm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yd4wx"]
+size = Vector2(64, 64)
+
+[node name="Magic Orb" type="StaticBody2D"]
+script = ExtResource("1_2b2li")
+shootRange = 384
+damage = 20.0
+projectileSprite = "res://Sprites/magic_projectile.png"
+projectileSpeed = 800
+shootSound = "res://Sounds/orbshoot.wav"
+followTarget = false
+
+[node name="Top" type="Sprite2D" parent="."]
+z_index = 1
+position = Vector2(0, -16)
+texture = ExtResource("2_qgloj")
+
+[node name="Base" type="Sprite2D" parent="."]
+texture = ExtResource("3_ssicm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_yd4wx")

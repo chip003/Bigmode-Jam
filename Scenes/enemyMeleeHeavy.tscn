@@ -1,0 +1,154 @@
+[gd_scene load_steps=18 format=3 uid="uid://buqvt76dk1olb"]
+
+[ext_resource type="Script" path="res://Scripts/enemy.gd" id="1_lp2ib"]
+[ext_resource type="Texture2D" uid="uid://cd8vyb1esxylk" path="res://Sprites/enemy00.png" id="2_tfeoo"]
+[ext_resource type="Texture2D" uid="uid://cpxr7fxx16x6v" path="res://Sprites/water_overlay.png" id="3_xbpqn"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c267m"]
+atlas = ExtResource("2_tfeoo")
+region = Rect2(0, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xsubx"]
+atlas = ExtResource("2_tfeoo")
+region = Rect2(32, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ios82"]
+atlas = ExtResource("2_tfeoo")
+region = Rect2(64, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f1bbs"]
+atlas = ExtResource("2_tfeoo")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7cl0j"]
+atlas = ExtResource("2_tfeoo")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rokdq"]
+atlas = ExtResource("2_tfeoo")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6yxvo"]
+atlas = ExtResource("2_tfeoo")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0k4kl"]
+atlas = ExtResource("2_tfeoo")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mn2v8"]
+atlas = ExtResource("2_tfeoo")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ak15w"]
+atlas = ExtResource("2_tfeoo")
+region = Rect2(0, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3rkg3"]
+atlas = ExtResource("2_tfeoo")
+region = Rect2(32, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gliqk"]
+atlas = ExtResource("2_tfeoo")
+region = Rect2(64, 96, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tnfsd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c267m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xsubx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ios82")
+}],
+"loop": true,
+"name": &"walk_-10",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f1bbs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7cl0j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rokdq")
+}],
+"loop": true,
+"name": &"walk_0-1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6yxvo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0k4kl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mn2v8")
+}],
+"loop": true,
+"name": &"walk_01",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ak15w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3rkg3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gliqk")
+}],
+"loop": true,
+"name": &"walk_10",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_evcp3"]
+
+[node name="EnemyHeavy" type="CharacterBody2D" groups=["Enemies"]]
+z_index = 4
+collision_layer = 2
+collision_mask = 4
+motion_mode = 1
+script = ExtResource("1_lp2ib")
+maxSpeed = 40
+damage = 5
+hp = 30
+attackTime = 3.0
+goldAmount = 4
+attackSound = "res://Sounds/heavyattack.wav"
+
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+clip_children = 2
+sprite_frames = SubResource("SpriteFrames_tnfsd")
+animation = &"walk_-10"
+
+[node name="WaterOverlay" type="Sprite2D" parent="Sprite"]
+position = Vector2(0, 26)
+texture = ExtResource("3_xbpqn")
+
+[node name="Damage" type="ColorRect" parent="Sprite"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = -64.0
+offset_right = 64.0
+offset_bottom = 64.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.894118, 0.231373, 0.266667, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 6)
+shape = SubResource("RectangleShape2D_evcp3")

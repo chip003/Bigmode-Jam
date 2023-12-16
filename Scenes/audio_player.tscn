@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://dssib3bicrj7o"]
+
+[ext_resource type="Script" path="res://Scripts/audio_player.gd" id="1_uah26"]
+
+[node name="AudioPlayer" type="AudioStreamPlayer2D"]
+autoplay = true
+max_distance = 1024.0
+script = ExtResource("1_uah26")
+
+[connection signal="finished" from="." to="." method="_on_finished"]
