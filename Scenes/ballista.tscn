@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://ckn28lmk1mrvu"]
+
+[ext_resource type="Texture2D" uid="uid://dp3oxx0sw2aoy" path="res://Sprites/ballista.png" id="1_61an6"]
+[ext_resource type="Script" path="res://Scripts/turret.gd" id="1_xa70e"]
+[ext_resource type="Texture2D" uid="uid://chx061sni1cqu" path="res://Sprites/weapon_platform.png" id="2_26pbs"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yd4wx"]
+size = Vector2(64, 64)
+
+[node name="Ballista" type="StaticBody2D"]
+script = ExtResource("1_xa70e")
+shootSpeed = 2.0
+shootRange = 256
+damage = 10.0
+projectileSprite = "res://Sprites/bolt.png"
+projectileSpeed = 800
+shootSound = "res://Sounds/ballista_shoot.wav"
+
+[node name="Top" type="Sprite2D" parent="."]
+z_index = 1
+position = Vector2(0, -7)
+texture = ExtResource("1_61an6")
+
+[node name="Base" type="Sprite2D" parent="."]
+texture = ExtResource("2_26pbs")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_yd4wx")

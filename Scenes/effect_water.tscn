@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://y4o6xna8ats3"]
+
+[ext_resource type="Texture2D" uid="uid://dx8amdt2xhxil" path="res://Sprites/dust_particle.png" id="1_ykhhl"]
+[ext_resource type="Script" path="res://Scripts/particle_finished.gd" id="2_yl0q5"]
+
+[sub_resource type="Gradient" id="Gradient_jlhjt"]
+offsets = PackedFloat32Array(0, 0.0423892, 0.699422, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 0.388672, 0.76861, 1, 1, 0, 0.6, 0.858824, 0)
+
+[node name="EffectWater" type="CPUParticles2D"]
+z_index = 1
+emitting = false
+amount = 32
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+texture = ExtResource("1_ykhhl")
+emission_shape = 1
+emission_sphere_radius = 32.0
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_max = 20.0
+angle_min = -720.0
+angle_max = 720.0
+scale_amount_max = 3.0
+color_ramp = SubResource("Gradient_jlhjt")
+script = ExtResource("2_yl0q5")
+
+[connection signal="finished" from="." to="." method="_on_finished"]

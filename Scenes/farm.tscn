@@ -1,0 +1,41 @@
+[gd_scene load_steps=6 format=3 uid="uid://bykjrrkk50ykr"]
+
+[ext_resource type="Script" path="res://Scripts/farm.gd" id="1_gy4ci"]
+[ext_resource type="Texture2D" uid="uid://6nivbgir01iq" path="res://Sprites/farm.png" id="1_xqjfn"]
+[ext_resource type="Theme" uid="uid://klooyeous40l" path="res://theme.tres" id="2_67gne"]
+[ext_resource type="Texture2D" uid="uid://cay8cckdoyyqc" path="res://Sprites/gold_icon.png" id="3_81ljq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2moc8"]
+size = Vector2(96, 96)
+
+[node name="Farm" type="StaticBody2D" groups=["Farms"]]
+script = ExtResource("1_gy4ci")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_xqjfn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_2moc8")
+
+[node name="Box" type="HBoxContainer" parent="."]
+modulate = Color(1, 1, 1, 0)
+offset_left = -44.0
+offset_top = -20.0
+offset_right = 44.0
+offset_bottom = 20.0
+
+[node name="Label" type="Label" parent="Box"]
+layout_mode = 2
+theme = ExtResource("2_67gne")
+text = "+40"
+
+[node name="MarginContainer" type="MarginContainer" parent="Box"]
+layout_mode = 2
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 10
+
+[node name="TextureRect" type="TextureRect" parent="Box/MarginContainer"]
+layout_mode = 2
+texture = ExtResource("3_81ljq")
+expand_mode = 2

@@ -1,0 +1,82 @@
+[gd_scene load_steps=11 format=3 uid="uid://bsr17mysl4m05"]
+
+[ext_resource type="Script" path="res://Scripts/alligator.gd" id="1_nletj"]
+[ext_resource type="Texture2D" uid="uid://dldae56qyuptd" path="res://Sprites/alligator.png" id="2_l234f"]
+[ext_resource type="Texture2D" uid="uid://chx061sni1cqu" path="res://Sprites/weapon_platform.png" id="3_lysnx"]
+[ext_resource type="Texture2D" uid="uid://daf6a6axqbods" path="res://Sprites/circle.png" id="4_o3mrb"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gr00o"]
+atlas = ExtResource("2_l234f")
+region = Rect2(0, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mc0ld"]
+atlas = ExtResource("2_l234f")
+region = Rect2(96, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ukllv"]
+atlas = ExtResource("2_l234f")
+region = Rect2(192, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wpv4k"]
+atlas = ExtResource("2_l234f")
+region = Rect2(288, 0, 96, 96)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_e40r7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gr00o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mc0ld")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ukllv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wpv4k")
+}],
+"loop": true,
+"name": &"default",
+"speed": 3.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yd4wx"]
+size = Vector2(96, 96)
+
+[node name="Alligator" type="StaticBody2D"]
+script = ExtResource("1_nletj")
+shootSpeed = 10.0
+damage = 9999.0
+shootSound = "res://Sounds/chomp.wav"
+shootVolume = -5
+followTarget = false
+usesProjectile = false
+cooldownWhileInRange = false
+
+[node name="Top" type="AnimatedSprite2D" parent="."]
+z_index = 1
+sprite_frames = SubResource("SpriteFrames_e40r7")
+autoplay = "default"
+frame_progress = 0.639969
+
+[node name="Base" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("3_lysnx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_yd4wx")
+
+[node name="Progress" type="TextureProgressBar" parent="."]
+z_index = 2
+offset_left = -8.0
+offset_top = -8.0
+offset_right = 32.0
+offset_bottom = 32.0
+step = 0.1
+fill_mode = 5
+texture_under = ExtResource("4_o3mrb")
+texture_progress = ExtResource("4_o3mrb")
+tint_under = Color(0.227451, 0.266667, 0.4, 0.588235)
+tint_over = Color(1, 1, 1, 0)
+tint_progress = Color(1, 1, 0.309804, 1)
